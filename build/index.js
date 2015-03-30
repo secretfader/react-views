@@ -13,14 +13,16 @@ var View = (function () {
   function View(options) {
     _classCallCheck(this, View);
 
-    this.opts = options || {};
+    options = options || {};
 
-    this.opts.cache = this.opts.cache || true;
-    this.opts.markup = this.opts.markup || "<!doctype html>";
-    this.opts.path = this.opts.path || process.cwd();
-    this.opts.pretty = this.opts.pretty || false;
+    options.cache = options.cache || false;
+    options.markup = options.markup || "<!doctype html>";
+    options.path = options.path || process.cwd();
+    options.pretty = options.pretty || false;
 
-    jsx.install(this.opts.jsx || { extension: ".jsx" });
+    this.opts = options;
+
+    jsx.install(options.jsx || { extension: ".jsx" });
   }
 
   _createClass(View, {
@@ -50,7 +52,7 @@ var View = (function () {
           output.push(self.opts.markup, React.renderToStaticMarkup(view(locals)));
 
           output = output.join("");
-          if (self.pretty) output = clean(output);
+          if (self.opts.pretty) output = clean(output);
 
           if (self.opts.cache) View.cache[template] = output;
 
