@@ -1,6 +1,6 @@
 {
   "name": "react-views",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Render React components server side.",
   "main": "build/index.js",
   "scripts": {
