@@ -21,8 +21,6 @@ var View = (function () {
     this.opts.pretty = this.opts.pretty || false;
 
     jsx.install(this.opts.jsx || { extension: ".jsx" });
-
-    this.configured = true;
   }
 
   _createClass(View, {
@@ -37,8 +35,6 @@ var View = (function () {
       value: function render(template, locals) {
         var self = this;
         locals = locals || {};
-
-        if (!self.configured) self.configure();
 
         return new Promise(function (resolve, reject) {
           if (View.cache[template] && self.opts.cache) {
