@@ -1,7 +1,7 @@
 var path   = require('path')
 ,   expect = require('chai').expect;
 
-engine = require('../')({
+var engine = require('../')({
   path: path.join(__dirname, 'support'),
   cache: false
 });
