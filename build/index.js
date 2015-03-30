@@ -13,19 +13,26 @@ var View = (function () {
   function View(options) {
     _classCallCheck(this, View);
 
-    options = options || {};
+    this.opts = options || {};
 
-    this.cache = options.cache || true;
-    this.markup = options.markup || "<!doctype html>";
-    this.path = options.path || process.cwd();
-    this.pretty = options.pretty || false;
+    this.opts.cache = this.opts.cache || true;
+    this.opts.markup = this.opts.markup || "<!doctype html>";
+    this.opts.path = this.opts.path || process.cwd();
+    this.opts.pretty = this.opts.pretty || false;
 
-    jsx.install(options.jsx || { extension: ".jsx" });
+    jsx.install(this.opts.jsx || { extension: ".jsx" });
 
     this.configured = true;
   }
 
   _createClass(View, {
+    flush: {
+      value: function flush(key) {
+        if (key) {
+          return delete View.cache[key];
+        }View.cache = {};
+      }
+    },
     render: {
       value: function render(template, locals) {
         var self = this;
@@ -34,20 +41,22 @@ var View = (function () {
         if (!self.configured) self.configure();
 
         return new Promise(function (resolve, reject) {
-          if (self.cache[template] && self.cache) {
-            return resolve(self.cache[template]);
+          if (View.cache[template] && self.opts.cache) {
+            return resolve(View.cache[template]);
           }
 
-          var view = require(path.join(self.path, template)),
+          var view = require(path.join(self.opts.path, template)),
               output = [];
 
           view = view["default"] || view;
           view = React.createFactory(view);
 
-          output.push(self.markup, React.renderToStaticMarkup(view(locals)));
+          output.push(self.opts.markup, React.renderToStaticMarkup(view(locals)));
 
           output = output.join("");
           if (self.pretty) output = clean(output);
+
+          if (self.opts.cache) View.cache[template] = output;
 
           resolve(output);
         });
