@@ -1,0 +1,35 @@
+{
+  "name": "react-views",
+  "version": "1.0.0",
+  "description": "Render React components server side.",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/originalmachine/react-views.git"
+  },
+  "keywords": [
+    "koa",
+    "react",
+    "views"
+  ],
+  "author": "Nicholas Young <nicholas@nicholaswyoung.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/originalmachine/react-views/issues"
+  },
+  "homepage": "https://github.com/originalmachine/react-views",
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^4.0.1",
+    "gulp-mocha": "^2.0.1"
+  },
+  "dependencies": {
+    "js-beautify": "^1.5.5",
+    "node-jsx": "^0.12.4",
+    "react": "^0.13.1"
+  }
+}
