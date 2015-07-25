@@ -5,11 +5,11 @@ Render React components server side. This module was originally designed to work
 ## Usage
 
 ```javascript
-var app    = require('koa')();
+var app = require('koa')();
 
 var engine = require('react-views')({
   path: './views',
-  cache: false // default = true
+  cache: false // default = false
 });
 
 app.use(function * () {
