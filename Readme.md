@@ -1,5 +1,7 @@
 # react-views
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/nicholaswyoung/react-views.svg)](https://greenkeeper.io/)
+
 Render React components server side. This module was originally designed to work with Koa and io.js, but should work anywhere Promises are implemented.
 
 ## Usage
